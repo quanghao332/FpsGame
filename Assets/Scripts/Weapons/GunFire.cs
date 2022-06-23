@@ -9,6 +9,8 @@ public class GunFire : MonoBehaviour
     public AudioSource SoundFire;
     public AudioSource EmptyAmmoSound;
     public bool isFiring = false;
+    public float targetDistance;
+    public int damageAmount = 5;
 
 
     void Update()
@@ -31,8 +33,14 @@ public class GunFire : MonoBehaviour
 
     IEnumerator FiringGun()
     {
+        RaycastHit theShot;
         isFiring = true;
         GlobalAmmo.Ammo -= 1;
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out theShot))
+        {
+            targetDistance = theShot.distance;
+            theShot.transform.SendMessage("DamageEnemy", damageAmount, SendMessageOptions.DontRequireReceiver);
+        }
         Gun.GetComponent<Animator>().Play("GunFire");
         muzzleFlash.SetActive(true);
         SoundFire.Play();

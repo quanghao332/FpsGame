@@ -26,6 +26,13 @@ public class EnemiesDeath : MonoBehaviour
             enemyAI.SetActive(false);
             theEnemy.GetComponent<LookPlayer>().enabled = false;
             GlobalScore.scoreValue += 100;
+            GlobalComplete.enemycount += 1;
+            Invoke("destroyObj", 5f);
         }   
+    }
+
+    void destroyObj()
+    {
+        theEnemy.SetActive(false);
     }
 }

@@ -8,6 +8,7 @@ public class ChestCtrl : MonoBehaviour
     public GameObject Instruction;
     public GameObject AnimObject;
     public AudioSource ChestSound;
+    public Light lightTreasure;
     public bool Action = false;
 
 
@@ -15,6 +16,7 @@ public class ChestCtrl : MonoBehaviour
     void Start()
     {
         Instruction.SetActive(false);
+        lightTreasure.enabled = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -42,6 +44,7 @@ public class ChestCtrl : MonoBehaviour
             Action = false;
             this.GetComponent<ChestCtrl>().enabled = false;
             Instruction.GetComponent<Text>().enabled = false;
+            lightTreasure.enabled = true;
             GlobalScore.scoreValue += 500;
         }
     }

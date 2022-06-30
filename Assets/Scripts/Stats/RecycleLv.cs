@@ -11,14 +11,20 @@ public class RecycleLv : MonoBehaviour
     void Start()
     {
         GlobalLife.lifeValue -= 1;
-        if(GlobalLife.lifeValue == 0)
+        if (GlobalLife.lifeValue == 0)
         {
             gameOver.SetActive(true);
         }
         else
         {
-            SceneManager.LoadScene(2);
+            if (GlobalComplete.nextfloor == 4)
+            {
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                SceneManager.LoadScene(GlobalComplete.nextfloor);
+            }
         }
-        
     }
 }

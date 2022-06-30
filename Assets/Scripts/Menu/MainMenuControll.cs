@@ -56,4 +56,9 @@ public class MainMenuControll : MonoBehaviour
         SceneManager.LoadScene(loadScene);
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene(4);
+    }
+
 }

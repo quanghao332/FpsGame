@@ -7,7 +7,7 @@ public class GlobalComplete : MonoBehaviour
 {
     public static int enemycount;
     public GameObject enemyDisplay;
-    public static int nextfloor = 2;
+    public static int nextfloor = 4;
     void Update()
     {
         enemyDisplay.GetComponent<Text>().text = "" + enemycount;

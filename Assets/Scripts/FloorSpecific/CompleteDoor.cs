@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 
-public class CompleteDoor: MonoBehaviour
+public class CompleteDoor : MonoBehaviour
 {
     public GameObject fadeOut;
     public GameObject completePanel;
@@ -30,9 +30,13 @@ public class CompleteDoor: MonoBehaviour
         PlayerPrefs.SetInt("AmmoSaved", GlobalAmmo.Ammo);
         yield return new WaitForSeconds(2);
         completePanel.SetActive(true);
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         GlobalScore.scoreValue = 0;
         GlobalComplete.enemycount = 0;
         SceneManager.LoadScene(GlobalComplete.nextfloor);
+        if (GlobalComplete.nextfloor == 6)
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 }
